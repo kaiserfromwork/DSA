@@ -13,3 +13,4 @@ for char in user_string:
 # pop from stack until peek is False
 while not stack.is_empty():
     print(stack.pop(), end=" ")
+
