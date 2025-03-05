@@ -1,4 +1,4 @@
-# Problem: Min Stack
+# Problem: Min Stack (medium)
 # Implement a stack that supports push, pop, and retrieving the minimum element in constant time.
 
 from data_structures.stack import Stack
