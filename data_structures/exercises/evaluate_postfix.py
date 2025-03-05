@@ -17,47 +17,48 @@ postfix_expressions = [
     ("7 2 3 + * 5 /", 7),  # (7 * (2 + 3)) / 5 = 7
 ]
 
-math_symbols = ['+', '-', '*', '/']
-numbers_stack = Stack()
-expression, answer = postfix_expressions[random.randint(0, len(postfix_expressions) - 1)]
+math_symbols = ['+', '-', '*', '/']  # used to differentiate between numbers/space in expression
+numbers_stack = Stack()  # initiating stack
+
+# picking random expression. also storing answer of expression for testing for later
+expression, answer = postfix_expressions[random.randint(0, len(postfix_expressions) - 1)]  #
 
 
 def eval_postfix(math_expression):
     result = []
     for char in math_expression:
-        if char not in math_symbols:
-            # print(f'{char} pushed to Stack')
+        if char not in math_symbols:  # Pushing "numbers" and spaces to stack, spaces help to figure out what is being calculated together
             numbers_stack.push(char)
         else:
             counter = 0
-            # print(f'{char} is a math symbol')
-            print(numbers_stack.pop())
+            numbers_stack.pop()  # popping space
             while counter < 2:
-                if numbers_stack.is_empty():
+                if numbers_stack.is_empty():  # break loop if no items left on the stack
                     break
-                if numbers_stack.peek() == " ":
+                if numbers_stack.peek() == " ":  # using blank spaces to calculate
                     counter += 1
                     if counter < 2:
-                        result.append(char)
-                        # print(f"Added symbol to expression: {char}")
+                        result.append(char)  # first space is replaced by math symbol (+, -, *, /), the popped
                         numbers_stack.pop()
                 else:
+                    # adding number to list to create expression outside the loop.
                     popped_item = numbers_stack.pop()
                     result.append(popped_item)
-                    print(f"Added number to expression: {popped_item}")
 
-            # print(f'Value of result: {result}')
+            # reverting and joining items from array to be used in eval()
             a = result[::-1]
             calc = "".join(a)
             print(f'Calc: {calc}')
+
+            # using eval() to get the calculation and pushing it back to stack with str()
             eval_calc = eval(calc)
-            # print(f'eval calc: {eval_calc}')
             numbers_stack.push(str(eval_calc))
             result.clear()
 
     return numbers_stack.peek()
 
 
+# TEST!
 print(f'Returning: {eval_postfix(expression)}')
 print(f'Expression: {expression}, Answer: {answer}')
 
