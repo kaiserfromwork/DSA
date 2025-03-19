@@ -21,3 +21,6 @@ class Stack:  # LIFO - Last In First Out
 
     def size(self):  # check the size of Stack
         return len(self.stack)
+
+    def __str__(self):
+        return str(self.stack)
