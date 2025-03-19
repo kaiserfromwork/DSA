@@ -5,7 +5,17 @@ import random
 
 
 def check_palindrome(word: str):
-    palindrome = deque(word)
+    """Checks if string is a palindrome
+    
+    Parameters:  
+        word (str) - string to be checked
+    
+    Returns: 
+        bool: returns True if word is a palindrome otherwise False
+    """
+    
+    palindrome = deque(word) # Converting str in a palindrome o(n)
+
     if word == " " or word == "":
         return False
 
@@ -28,6 +38,7 @@ palindrome_words = (
     ("programming", False)
 )
 
+# Randomly selecting a word from tuple
 random_index = random.randint(0, len(palindrome_words) - 1)
 word, result = palindrome_words[random_index]
 
