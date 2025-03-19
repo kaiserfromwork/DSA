@@ -23,26 +23,14 @@ print(my_list)
 window_size = 3
 window = deque()
 
-# creating queue
-queue = deque(my_list)
 result = []
 
-# while 0 < len(queue):
-for _ in range(len(queue)):
-    if len(window) < window_size:
-        window.append(queue.popleft())
-    else:
-        print(f"Window: {window}")
-        print(f"Queue Length: {len(queue)}")
-        # print(f"Output: {window}")
-        max_val = max(window)
-        # print(f"max value: {max_val}")
-        result.append(max_val)
-        window.popleft()
-        
-    # print(window)
-print(80 * "*")
-print(result == expected_output)
+for number in my_list:
+   window.append(number)
+   if len(window) == window_size:
+      print(window)
+      result.append(max(window))
+      window.popleft()
+      
 print(f"Result: {result}")
-print(f"Expected output: {expected_output}")
-        
+print(f"Is it correct? {result == expected_output}")        
