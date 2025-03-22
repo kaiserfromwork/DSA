@@ -16,18 +16,21 @@ class DoubleLinkedList():
 
     def __init__(self):
         self.head = None
+        self.tail = None
 
 
     def append(self, value):
         if self.head is None:
             self.head = DoublyNode(value)
+            self.tail = self.head
             return
-        
+
         current = self.head
         while current.next:
             current = current.next
         
         current.next = DoublyNode(value, prev=current)
+        self.tail = current.next
 
 
     def display_list(self):
@@ -38,6 +41,16 @@ class DoubleLinkedList():
             elements.append(str(current.value))
             current = current.next
 
+        print(" <-> ".join(elements))
+
+    def reverse_display(self):
+        current = self.tail
+        elements = []
+
+        while current:
+            elements.append(str(current.value))
+            current = current.prev
+        
         print(" <-> ".join(elements))
 
 
@@ -57,3 +70,6 @@ db_list.append(32)
 
 print("Adding more nodes!")
 db_list.display_list()
+
+print("Reverse List")
+db_list.reverse_display()
