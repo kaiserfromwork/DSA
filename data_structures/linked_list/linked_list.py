@@ -17,6 +17,7 @@ class LinkedList():
         self.head = None
 
 
+    # append node to the end of linked list
     def append(self, value):
         if self.head is None: # first node becomes the head of the list
             head = SinglyNode(value)
@@ -30,7 +31,8 @@ class LinkedList():
         current.next = SinglyNode(value)    # Next node will be the new node
 
     
-    def traverse(self, head): # traverse through list (printing value of current node)
+    # traverse through list (printing value of current node)
+    def traverse(self, head): 
         current = head
 
         while current:
@@ -38,6 +40,7 @@ class LinkedList():
             current = current.next
 
     
+    # search for a specific node
     def search_node(self, value):
         current = self.head
 
