@@ -39,6 +39,8 @@ class DoubleLinkedList():
             current = current.next
 
         print(" <-> ".join(elements))
+
+
 ########################### TEST ###########################
 
 db_node = DoublyNode(5)
@@ -46,12 +48,12 @@ print(f"Single Print First Node: {db_node}")
 
 db_list = DoubleLinkedList()
 
-db_list.append(db_node)
+db_list.append(5) 
 db_list.display_list()
 
-db_list.append(DoublyNode(25))
-db_list.append(DoublyNode(35))
-db_list.append(DoublyNode(40))
+db_list.append(25)
+db_list.append(22)
+db_list.append(32)
 
 print("Adding more nodes!")
 db_list.display_list()
