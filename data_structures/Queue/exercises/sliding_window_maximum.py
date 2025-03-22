@@ -21,16 +21,28 @@ print(my_list)
 
 # Window size 
 window_size = 3
-window = deque()
+dq = deque()
 
 result = []
 
-for number in my_list:
-   window.append(number)
-   if len(window) == window_size:
-      print(window)
-      result.append(max(window))
-      window.popleft()
+for i in range(len(my_list)):
+    # Remove indices of elements not in the window
+    if dq and dq[0] < i - window_size + 1:
+       dq.popleft()
+
+    # Remove elements smaller than the current one (maintain decreasing order)
+    while dq and my_list[dq[-1]] < my_list[i]:
+        dq.pop()
+
+    # Add current index to deque
+    dq.append(i)
+    
+    # The front of the deque is the max of the current window
+    if i >= window_size - 1:
+        result.append(my_list[dq[0]])   
+
+
+    
       
 print(f"Result: {result}")
 print(f"Is it correct? {result == expected_output}")        
