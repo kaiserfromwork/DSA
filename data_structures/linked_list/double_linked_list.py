@@ -12,13 +12,14 @@ class DoublyNode():
         return str(self.value)
     
 
-class DoubleLinkedList():
+class DoubleLinkedList():  # Double Linked List - Structuring Nodes
 
     def __init__(self):
         self.head = None
         self.tail = None
 
 
+    # Adds Node to the end of the the List
     def append(self, value):
         if self.head is None:
             self.head = DoublyNode(value)
@@ -33,6 +34,7 @@ class DoubleLinkedList():
         self.tail = current.next
 
 
+    # Traverses and prints the list from head to tail
     def display_list(self):
         current = self.head
         elements = []
@@ -43,6 +45,8 @@ class DoubleLinkedList():
 
         print(" <-> ".join(elements))
 
+
+    # Traverses and prints the list from tail to head
     def reverse_display(self):
         current = self.tail
         elements = []
@@ -52,7 +56,17 @@ class DoubleLinkedList():
             current = current.prev
         
         print(" <-> ".join(elements))
+    
 
+    def search_node(self, value):
+        current = self.head
+        
+        while current:
+            if current.value == value:
+                return True
+            current = current.next
+
+        return False
 
 ########################### TEST ###########################
 
